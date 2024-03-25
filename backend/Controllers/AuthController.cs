@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using YourNamespace.Models;
+using backend.Models;
 
 namespace YourNamespace.Controllers
 {
