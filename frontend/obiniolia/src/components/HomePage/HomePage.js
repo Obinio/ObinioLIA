@@ -1,11 +1,13 @@
 import React from 'react';
 import './HomePage.css';
+import Users from '../Users.js'; // Gå upp en nivå och hitta Users.js
+
 
 function HomePage() {
   return (
-    <div classname="homePage">
-      <h1>Välkommen till Dokumenthanteraren!</h1>
-      <p>Detta är startsidan för din applikation.</p>
+    <div>
+      <h1>Welcome to the Home Page</h1>
+      <Users /> {/* Använd Users-komponenten här */}
     </div>
   );
 }
