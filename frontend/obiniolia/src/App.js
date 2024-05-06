@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import HomePage from './components/HomePage/HomePage';
-import AdminPage from './components/AdminPage'; // Förutsätter att du har skapat en AdminPage-komponent
+import AdminPage from './components/AdminPage/AdminPage'; // Kontrollera att sökvägen är korrekt
 
 function App() {
     return (
@@ -16,14 +16,10 @@ function App() {
                     </ul>
                 </nav>
                 {/* Routes */}
-                <Switch>
-                    <Route path="/admin">
-                        <AdminPage />
-                    </Route>
-                    <Route path="/">
-                        <HomePage />
-                    </Route>
-                </Switch>
+                <Routes>
+                    <Route path="/admin" element={<AdminPage />} />
+                    <Route path="/" element={<HomePage />} />
+                </Routes>
             </div>
         </Router>
     );
