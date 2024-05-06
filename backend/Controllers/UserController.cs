@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using backend.Data;
 using backend.Models;
+using BCrypt.Net;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,10 +45,12 @@ namespace backend.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
+            // Hasha lösenordet innan det sparas
+         user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+          _context.Users.Add(user);
+         await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUser", new { id = user.Id }, user);
+    return CreatedAtAction("GetUser", new { id = user.Id }, user);
         }
 
         // PUT: api/Users/5

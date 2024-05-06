@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Luirlr7cKziF0u3qaJvRdf3vfWbraXnX31rrXE2otDu5Tdup2pEX3+jg85e6aw0avVDlIsnm7fGqs+AdRH9MDA==",
+  "dgSpecHash": "nmpxDdNWeIr/svDy1r9OaVFilzUne55/ZBiFpf4qC9MVrYsbwTffPnmRW+PY+Vu9907CFwb469XIE9Rrt1ALDQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Mars\\ObinioLIA\\backend\\backend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Mars\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Mars\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
+    "C:\\Users\\Mars\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\Mars\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Mars\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.3\\microsoft.aspnetcore.openapi.7.0.3.nupkg.sha512",
     "C:\\Users\\Mars\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
