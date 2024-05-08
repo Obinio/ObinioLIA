@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using backend.Models;
+using BCrypt.Net;
 
 namespace YourNamespace.Controllers
 {

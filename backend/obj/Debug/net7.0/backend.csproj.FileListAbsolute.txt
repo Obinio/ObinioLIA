@@ -74,3 +74,4 @@ C:\Users\Mars\ObinioLIA\backend\bin\Debug\net7.0\Microsoft.SqlServer.Server.dll
 C:\Users\Mars\ObinioLIA\backend\bin\Debug\net7.0\Mono.TextTemplating.dll
 C:\Users\Mars\ObinioLIA\backend\bin\Debug\net7.0\System.CodeDom.dll
 C:\Users\Mars\ObinioLIA\backend\bin\Debug\net7.0\System.Memory.Data.dll
+c:\Users\Mars\ObinioLIA\backend\bin\Debug\net7.0\BCrypt.Net-Next.dll
