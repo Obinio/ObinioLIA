@@ -12,7 +12,7 @@ function HomePage() {
           <Link to="/">Home</Link> |
           <Link to="/admin">Admin</Link> |
           <Link to="/login">Log In</Link> |
-          <Link to="/RegistrationForm">Registration</Link>
+          <Link to="/RegistrationForm">Register</Link>
         </nav>
       </header>
       <section>
