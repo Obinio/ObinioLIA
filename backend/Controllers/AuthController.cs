@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
+using backend.Data;
 using backend.Models;
 using BCrypt.Net;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace YourNamespace.Controllers
 {
@@ -8,23 +11,31 @@ namespace YourNamespace.Controllers
     [Route("[controller]")]
     public class AuthController : ControllerBase
     {
-        // Här skulle du ha en tjänst för att hantera användardata, t.ex. en databastjänst
-        // För demonstrationens skull håller vi det enkelt
+        private readonly ApplicationDbContext _context;
+
+        public AuthController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
 
         [HttpPost("register")]
         public IActionResult Register(User user)
         {
-            // Registrera användaren
-            // I ett riktigt projekt, validera input och hash lösenord
+            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+            _context.Users.Add(user);
+            _context.SaveChanges();
             return Ok(new { message = "Användare registrerad" });
         }
 
         [HttpPost("login")]
-        public IActionResult Login(User user)
+        public IActionResult Login(UserLoginDto loginDto)
         {
-            // Autentisera användaren
-            // I ett riktigt projekt, validera användarnamn och lösenord mot databasen
-            return Ok(new { message = "Användare inloggad" });
+            var user = _context.Users.FirstOrDefault(u => u.Email == loginDto.Email);
+            if (user == null || !BCrypt.Net.BCrypt.Verify(loginDto.Password, user.Password))
+            {
+                return Unauthorized(new { message = "Användarnamn eller lösenord är felaktigt" });
+            }
+            return Ok(new { message = "Användare inloggad", UserId = user.Id, Username = user.Username, Role = user.Role });
         }
     }
 }
