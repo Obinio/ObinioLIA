@@ -42,16 +42,17 @@ namespace backend.Controllers
         }
 
         // POST: api/Users
-        [HttpPost]
+     [HttpPost("login")]
         public async Task<ActionResult<User>> PostUser(User user)
         {
-            // Hasha lösenordet innan det sparas
-         user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
-          _context.Users.Add(user);
+          user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);  // Hasha lösenordet
+         _context.Users.Add(user);
          await _context.SaveChangesAsync();
-
-    return CreatedAtAction("GetUser", new { id = user.Id }, user);
+         return CreatedAtAction("GetUser", new { id = user.Id }, user);
         }
+
+
+
 
         // PUT: api/Users/5
         [HttpPut("{id}")]

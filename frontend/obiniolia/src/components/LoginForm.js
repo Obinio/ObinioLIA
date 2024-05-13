@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Importera useNavigate hook
 
-function LoginForm({ onLoginSuccess }) {
+function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate(); // För navigation
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -17,7 +19,12 @@ function LoginForm({ onLoginSuccess }) {
         throw new Error('Login failed');
       }
       const data = await response.json();
-      onLoginSuccess(data); // Hantera loggad in användare i parent komponent eller context
+      // Navigera baserat på användarens roll
+      if (data.role === 'Admin') {
+        navigate('/admin-dashboard'); // ändra till din admin dashboard path
+      } else if (data.role === 'User') {
+        navigate('/user-dashboard'); // ändra till din user dashboard path
+      }
     } catch (err) {
       setError(err.message);
     }
@@ -25,7 +32,7 @@ function LoginForm({ onLoginSuccess }) {
 
   return (
     <div>
-      <h2>User Login</h2>
+      <h2>Login</h2>
       <form onSubmit={handleLogin}>
         <label>
           Email:

@@ -6,5 +6,7 @@ public class User
     public string? Username { get; set; }
     public string? Password { get; set; } // Notera: I en riktig applikation bör lösenordet hashas
     public string? Email { get; set; }
+    public string? Role {get; set;} //Rollattribut
+
 }
 }

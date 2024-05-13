@@ -6,7 +6,7 @@ function AdminPage() {
 
     const handleLogin = (username, password) => {
         // Här kan du lägga till mer avancerad logik eller anropa ett API
-        if (username === 'admin' && password === 'adminpass') {
+        if (username === 'admin@gmail.com' && password === 'adminpass') {
             setUser({ username });
         } else {
             alert('Fel användarnamn eller lösenord');

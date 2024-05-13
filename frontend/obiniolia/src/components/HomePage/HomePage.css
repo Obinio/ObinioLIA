@@ -1,5 +1,52 @@
-.homePage {
-    text-align: center;
-    margin-top: 50px;
-  }
-  
+.homepage {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f0f8ff;
+  color: #333;
+  padding: 20px;
+  text-align: center;
+}
+
+header {
+  padding: 10px 0;
+  border-bottom: 2px solid #ccc;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  margin: 0 10px;
+}
+
+nav a:hover {
+  color: #0275d8;
+}
+
+section {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+footer {
+  padding: 10px 0;
+  border-top: 2px solid #ccc;
+  font-size: 0.8em;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 1.2em;
+  margin-top: 20px;
+}
