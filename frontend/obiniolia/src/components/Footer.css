@@ -1,0 +1,21 @@
+.footer {
+    background-color: #f0f8ff;
+    color: #333;
+    padding: 20px;
+    text-align: center;
+    border-top: 2px solid #ccc;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .footer nav a {
+    text-decoration: none;
+    color: #333;
+    margin: 0 10px;
+  }
+  
+  .footer nav a:hover {
+    color: #0275d8;
+  }
+  
