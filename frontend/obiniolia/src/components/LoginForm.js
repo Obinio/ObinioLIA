@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Importera useNavigate hook
+import './LoginForm.css'; // Se till att du har en CSS-fil för LoginForm
 
 function LoginForm() {
   const [email, setEmail] = useState('');
@@ -31,19 +32,19 @@ function LoginForm() {
   };
 
   return (
-    <div>
+    <div className="login-form">
       <h2>Login</h2>
       <form onSubmit={handleLogin}>
-        <label>
-          Email:
+        <div className="form-group">
+          <label>Email:</label>
           <input type="email" value={email} onChange={e => setEmail(e.target.value)} />
-        </label>
-        <label>
-          Password:
+        </div>
+        <div className="form-group">
+          <label>Password:</label>
           <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
-        </label>
+        </div>
         <button type="submit">Login</button>
-        {error && <p>{error}</p>}
+        {error && <p className="error">{error}</p>}
       </form>
     </div>
   );

@@ -6,6 +6,7 @@ function Footer() {
     <footer className="footer">
       <p>© 2024 ObinioLIA. All rights reserved.</p>
       <nav>
+        <a href="/">Home</a> | 
         <a href="/about">About</a> | 
         <a href="/contact">Contact</a>
       </nav>
