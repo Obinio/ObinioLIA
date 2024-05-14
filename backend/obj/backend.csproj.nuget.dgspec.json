@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\Mars\\ObinioLIA\\backend\\backend.csproj": {}
+    "C:\\Users\\Mars\\ObinioLIA\\backend\\backend.csproj": {}
   },
   "projects": {
-    "c:\\Users\\Mars\\ObinioLIA\\backend\\backend.csproj": {
+    "C:\\Users\\Mars\\ObinioLIA\\backend\\backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Mars\\ObinioLIA\\backend\\backend.csproj",
+        "projectUniqueName": "C:\\Users\\Mars\\ObinioLIA\\backend\\backend.csproj",
         "projectName": "backend",
-        "projectPath": "c:\\Users\\Mars\\ObinioLIA\\backend\\backend.csproj",
+        "projectPath": "C:\\Users\\Mars\\ObinioLIA\\backend\\backend.csproj",
         "packagesPath": "C:\\Users\\Mars\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Mars\\ObinioLIA\\backend\\obj\\",
+        "outputPath": "C:\\Users\\Mars\\ObinioLIA\\backend\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "c:\\Users\\Mars\\NuGet.Config",
+          "C:\\Users\\Mars\\NuGet.Config",
           "C:\\Users\\Mars\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
