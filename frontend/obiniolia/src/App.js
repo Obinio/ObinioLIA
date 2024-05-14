@@ -9,10 +9,14 @@ import RegistrationForm from './components/RegistrationForm';
 import Footer from './components/Footer'; // Importera Footer
 import ProtectedRoute from './components/ProtectedRoute'; // Importera ProtectedRoute
 import AdminDashboard from './components/AdminPage/AdminDashboard';
+import Navbar from './components/Navbar';
+import { AuthProvider } from './components/AuthContext';
 
 function App() {
   return (
+    <AuthProvider>
     <Router>
+      <Navbar /> {/* Navbar visas på alla sidor */}
       <div className="App">
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -26,6 +30,7 @@ function App() {
         <Footer />
       </div>
     </Router>
+    </AuthProvider>
   );
 }
 
