@@ -10,7 +10,7 @@ function HomePage() {
         <h1>Welcome to the Home Page</h1>
         <nav>
           <Link to="/">Home</Link> |
-          <Link to="/admin">Admin</Link> |
+          <Link to="/AdminDashboard">Admin</Link> |
           <Link to="/login">Log In</Link> |
           <Link to="/RegistrationForm">Register</Link>
         </nav>
