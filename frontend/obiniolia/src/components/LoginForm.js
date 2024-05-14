@@ -1,31 +1,31 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Importera useNavigate hook
-import './LoginForm.css'; // Se till att du har en CSS-fil för LoginForm
+import { useNavigate } from 'react-router-dom';
+import './LoginForm.css';
 
 function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate(); // För navigation
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5057/api/Users/login', {
+      const response = await fetch('http://localhost:5057/Auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
       });
-      if (!response.ok) {
-        throw new Error('Login failed');
-      }
       const data = await response.json();
-      // Navigera baserat på användarens roll
-      if (data.role === 'Admin') {
-        navigate('/admin-dashboard'); // ändra till din admin dashboard path
-      } else if (data.role === 'User') {
-        navigate('/user-dashboard'); // ändra till din user dashboard path
+      console.log(data);  // Loggar data som kommer tillbaka från servern för felsökning
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Login failed');
       }
+      localStorage.setItem('userToken', data.token); // Antag att token skickas tillbaka
+
+      // Använder data.role för att bestämma navigering. Se till att serverns svar matchar dessa rollnamn exakt.
+      navigate(data.role === 'Admin' ? '/AdminDashboard' : '/UserDashboard', { state: { user: data } });
     } catch (err) {
       setError(err.message);
     }
@@ -37,11 +37,11 @@ function LoginForm() {
       <form onSubmit={handleLogin}>
         <div className="form-group">
           <label>Email:</label>
-          <input type="email" value={email} onChange={e => setEmail(e.target.value)} />
+          <input type="email" value={email} onChange={e => setEmail(e.target.value)} required />
         </div>
         <div className="form-group">
           <label>Password:</label>
-          <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
+          <input type="password" value={password} onChange={e => setPassword(e.target.value)} required />
         </div>
         <button type="submit">Login</button>
         {error && <p className="error">{error}</p>}
