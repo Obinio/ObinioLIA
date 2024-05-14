@@ -23,7 +23,7 @@ function LoginForm() {
         throw new Error(data.message || 'Login failed');
       }
       localStorage.setItem('userToken', data.token); // Antag att token skickas tillbaka
-
+      localStorage.setItem('userRole', data.role);
       // Använder data.role för att bestämma navigering. Se till att serverns svar matchar dessa rollnamn exakt.
       navigate(data.role === 'Admin' ? '/AdminDashboard' : '/UserDashboard', { state: { user: data } });
     } catch (err) {

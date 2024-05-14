@@ -1,8 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import './AdminDashboard.css'; // Skapa en CSS-fil för styling
+import { Link, useLocation } from 'react-router-dom';
+import './AdminDashboard.css';
 
 function AdminDashboard() {
+  const location = useLocation();
+  const user = location.state ? location.state.user : null;
+
+  if (!user) {
+    return <div>Please log in to view this page.</div>;
+  }
+
   return (
     <div className="AdminDashboard">
       <aside className="sidebar">
@@ -14,8 +21,7 @@ function AdminDashboard() {
         </ul>
       </aside>
       <section className="content">
-        {/* Innehåll som ändras baserat på navigationsval kommer att laddas här */}
-        <h1>Welcome to the Admin Dashboard</h1>
+        <h1>Welcome to the Admin Dashboard, {user.name}!</h1>
       </section>
     </div>
   );
