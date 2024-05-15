@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const AuthContext = createContext(null);
 
@@ -8,33 +9,34 @@ export function useAuth() {
 
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const userToken = localStorage.getItem('userToken');
-    // Här kan du också lägga till ytterligare kontroller om du lagrar mer information, t.ex. userRole
-    if (userToken) {
+    const userRole = localStorage.getItem('userRole');
+    if (userToken && userRole) {
       setCurrentUser({
         token: userToken,
-        // Exempel: Lägg till role om du sparar detta också
-        role: localStorage.getItem('userRole')
+        role: userRole,
       });
     }
   }, []);
 
   const login = (token, role) => {
     localStorage.setItem('userToken', token);
-    localStorage.setItem('userRole', role);  // Spara rollen om du använder den
+    localStorage.setItem('userRole', role);
     setCurrentUser({
-      token: token,
-      role: role
+      token,
+      role,
     });
+    navigate(role === 'Admin' ? '/AdminDashboard' : '/UserDashboard');
   };
 
   const logout = () => {
-    // Ta bort all användarinformation från localStorage
     localStorage.removeItem('userToken');
-    localStorage.removeItem('userRole');  // Se till att ta bort rollen också
+    localStorage.removeItem('userRole');
     setCurrentUser(null);
+    navigate('/');
   };
 
   return (

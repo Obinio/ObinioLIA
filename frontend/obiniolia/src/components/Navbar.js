@@ -1,16 +1,42 @@
-import React from 'react';
-import { useAuth } from './AuthContext'; // Justera sökvägen beroende på din mappstruktur
+import React, { useEffect } from 'react';
+import { useAuth } from './AuthContext';
+import { useNavigate } from 'react-router-dom';
+import './Navbar.css';
 
 function Navbar() {
   const { currentUser, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    if (window.confirm("Are you sure you want to log out?")) {
+      logout();
+      navigate('/');
+    }
+  };
 
   return (
-    <nav>
-      <div>
-        {currentUser && (
-          <button onClick={logout}>Log Out</button>
+    <nav className="navbar">
+      <ul>
+        {currentUser ? (
+          <>
+            <li>
+              <button disabled>Logged in as {currentUser.role}</button>
+            </li>
+            <li>
+              <button onClick={handleLogout}>Sign out</button>
+            </li>
+          </>
+        ) : (
+          <>
+            <li>
+              <button onClick={() => navigate('/login')}>Login</button>
+            </li>
+            <li>
+              <button onClick={() => navigate('/RegistrationForm')}>Register</button>
+            </li>
+          </>
         )}
-      </div>
+      </ul>
     </nav>
   );
 }

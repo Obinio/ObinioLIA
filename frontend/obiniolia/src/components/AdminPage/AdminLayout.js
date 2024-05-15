@@ -1,18 +1,11 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import Navbar from '../Navbar';
-import './AdminDashboard.css';
+import { Outlet, Link } from 'react-router-dom';
+import Navbar from '../Navbar';  // Använd den befintliga Navbar om den ska visas också
+import './AdminDashboard.css';  // Säkerställ att alla CSS-stilar gäller
 
-function AdminDashboard() {
-  const location = useLocation();
-  const user = location.state ? location.state.user : null;
-
-  if (!user) {
-    return <div>Please log in to view this page.</div>;
-  }
-
+function AdminLayout() {
   return (
-    <div className="AdminDashboard">
+    <div className="admin-dashboard">
       <Navbar />
       <aside className="sidebar">
         <ul>
@@ -23,10 +16,10 @@ function AdminDashboard() {
         </ul>
       </aside>
       <section className="content">
-        <h1>Welcome to the Admin Dashboard, {user.name}!</h1>
+        <Outlet />  // Plats för innehåll från undersidorna
       </section>
     </div>
   );
 }
 
-export default AdminDashboard;
+export default AdminLayout;
