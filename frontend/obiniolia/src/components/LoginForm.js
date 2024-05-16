@@ -17,16 +17,17 @@ function LoginForm() {
         body: JSON.stringify({ email, password })
       });
       const data = await response.json();
-      console.log(data);  // Loggar data som kommer tillbaka från servern för felsökning
-
+      console.log("Full Response:", response);
+      console.log("Data received:", data);
+  
       if (!response.ok) {
         throw new Error(data.message || 'Login failed');
       }
-      localStorage.setItem('userToken', data.token); // Antag att token skickas tillbaka
+      localStorage.setItem('userToken', data.token);
       localStorage.setItem('userRole', data.role);
-      // Använder data.role för att bestämma navigering. Se till att serverns svar matchar dessa rollnamn exakt.
       navigate(data.role === 'Admin' ? '/AdminDashboard' : '/UserDashboard', { state: { user: data } });
     } catch (err) {
+      console.error("Login error:", err);
       setError(err.message);
     }
   };

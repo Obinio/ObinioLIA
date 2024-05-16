@@ -11,7 +11,7 @@ function UserDashboard() {
 
   return (
     <div>
-      <h1>Welcome to Your Dashboard, {user.name}!</h1>
+      <h1>Welcome to Your Dashboard, {user.username}!</h1>
       <p>This is a simple user dashboard page. Here you can see your profile info and manage your settings.</p>
     </div>
   );

@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import Navbar from '../Navbar';
 import './AdminDashboard.css';
 
 function AdminDashboard() {
   const location = useLocation();
   const user = location.state ? location.state.user : null;
+
+  console.log("User data received:", user);  // Lägg till denna loggning för att se vad som hämtas
 
   if (!user) {
     return <div>Please log in to view this page.</div>;
@@ -13,7 +14,6 @@ function AdminDashboard() {
 
   return (
     <div className="AdminDashboard">
-      <Navbar />
       <aside className="sidebar">
         <ul>
           <li><Link to="/admin/users">See Registered Users</Link></li>
@@ -23,7 +23,7 @@ function AdminDashboard() {
         </ul>
       </aside>
       <section className="content">
-        <h1>Welcome to the Admin Dashboard, {user.name}!</h1>
+        <h1>Welcome to the Admin Dashboard, {user.username}!</h1>
       </section>
     </div>
   );

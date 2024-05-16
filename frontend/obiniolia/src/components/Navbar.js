@@ -7,6 +7,11 @@ function Navbar() {
   const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    // Detta tvingar Navbar att uppdatera när currentUser ändras
+    console.log("Navbar rendered with user:", currentUser);
+  }, [currentUser]);  // Lägg till currentUser som en dependency här
+
   const handleLogout = () => {
     if (window.confirm("Are you sure you want to log out?")) {
       logout();
