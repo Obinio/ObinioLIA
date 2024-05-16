@@ -27,12 +27,14 @@ function App() {
             <Route path="/login" element={<LoginForm />} />
             <Route path="/RegistrationForm" element={<RegistrationForm />} />
             <Route path="/UserDashboard" element={<UserDashboard />} />
-            <Route path="/admin/users" element={<AdminUsers />} />
-            <Route path="/admin/documents" element={<AdminDocuments />} />
-            <Route path="/admin/add-fields" element={<AddFields />} />
-            <Route path="/admin/upload" element={<AdminUpload />} />
+
+            {/* Skyddad route för admin */}
             <Route element={<ProtectedRoute role="Admin" />}>
-            <Route path="/AdminDashboard" element={<AdminDashboard />} />
+              <Route path="/AdminDashboard" element={<AdminDashboard />} />
+              <Route path="/admin/users" element={<AdminUsers />} />
+              <Route path="/admin/documents" element={<AdminDocuments />} />
+              <Route path="/admin/add-fields" element={<AddFields />} />
+              <Route path="/admin/upload" element={<AdminUpload />} />
             </Route>
           </Routes>
           <Footer />

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from './AuthContext';
 import './LoginForm.css';
 
 function LoginForm() {
@@ -7,6 +8,7 @@ function LoginForm() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -17,18 +19,17 @@ function LoginForm() {
         body: JSON.stringify({ email, password })
       });
       const data = await response.json();
-      console.log("Full Response:", response);
-      console.log("Data received:", data);
-  
+
       if (!response.ok) {
         throw new Error(data.message || 'Login failed');
       }
-      localStorage.setItem('userToken', data.token);
-      localStorage.setItem('userRole', data.role);
-      navigate(data.role === 'Admin' ? '/AdminDashboard' : '/UserDashboard', { state: { user: data } });
+
+      // Uppdatera login för att inkludera användarnamn
+      console.log('Login successful!');
+      login(data.token, data.role, data.username); // Uppdatera detta enligt det faktiska svaret från servern
     } catch (err) {
-      console.error("Login error:", err);
       setError(err.message);
+      console.error('Error occurred during login:', err);
     }
   };
 

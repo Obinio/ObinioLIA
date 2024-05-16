@@ -14,20 +14,24 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const userToken = localStorage.getItem('userToken');
     const userRole = localStorage.getItem('userRole');
-    if (userToken && userRole) {
+    const username = localStorage.getItem('username');
+    if (userToken && userRole && username) {
       setCurrentUser({
         token: userToken,
         role: userRole,
+        username: username
       });
     }
   }, []);
 
-  const login = (token, role) => {
+  const login = (token, role, username) => {
     localStorage.setItem('userToken', token);
     localStorage.setItem('userRole', role);
+    localStorage.setItem('username', username);
     setCurrentUser({
       token,
       role,
+      username
     });
     navigate(role === 'Admin' ? '/AdminDashboard' : '/UserDashboard');
   };
@@ -35,6 +39,7 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     localStorage.removeItem('userToken');
     localStorage.removeItem('userRole');
+    localStorage.removeItem('username');
     setCurrentUser(null);
     navigate('/');
   };

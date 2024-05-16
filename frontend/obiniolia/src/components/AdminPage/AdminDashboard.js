@@ -1,30 +1,31 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import './AdminDashboard.css';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../AuthContext';
+import './AdminDashboard.css'; // Importera CSS-filen
 
 function AdminDashboard() {
-  const location = useLocation();
-  const user = location.state ? location.state.user : null;
+  const { currentUser } = useAuth();
 
-  console.log("User data received:", user);  // Lägg till denna loggning för att se vad som hämtas
-
-  if (!user) {
-    return <div>Please log in to view this page.</div>;
+  if (!currentUser) {
+    return <div className="admin-documents">You are not logged in. Please login to access your dashboard.</div>;
   }
 
   return (
-    <div className="AdminDashboard">
+    <div className="admin-dashboard">
       <aside className="sidebar">
-        <ul>
-          <li><Link to="/admin/users">See Registered Users</Link></li>
-          <li><Link to="/admin/documents">Documents</Link></li>
-          <li><Link to="/admin/add-fields">Add Fields to Document</Link></li>
-          <li><Link to="/admin/upload">Upload</Link></li>
-        </ul>
+        <nav>
+          <ul className="sidebar-nav">
+            <li className="sidebar-nav-item"><Link to="/admin/users">Manage Users</Link></li>
+            <li className="sidebar-nav-item"><Link to="/admin/documents">Manage Documents</Link></li>
+            <li className="sidebar-nav-item"><Link to="/admin/add-fields">Add Fields to Document</Link></li>
+            <li className="sidebar-nav-item"><Link to="/admin/upload">Upload Documents</Link></li>
+          </ul>
+        </nav>
       </aside>
-      <section className="content">
-        <h1>Welcome to the Admin Dashboard, {user.username}!</h1>
-      </section>
+      <main className="admin-content">
+        <h1>Welcome to the Admin Dashboard, {currentUser.username}!</h1>
+        <p>This is a simple admin dashboard page. Here you can manage users and documents.</p>
+      </main>
     </div>
   );
 }
