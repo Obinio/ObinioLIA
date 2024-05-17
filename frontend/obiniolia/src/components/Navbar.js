@@ -34,10 +34,18 @@ function Navbar() {
   return (
     <nav className="navbar">
       <ul>
-        <li>
-          <button onClick={handleHomeClick}>Home</button>
-        </li>
         {currentUser ? (
+          <li>
+            <button onClick={handleHomeClick}>
+              {role === 'Admin' ? 'AdminDashboard' : 'UserDashboard'}
+            </button>
+          </li>
+        ) : (
+          <li>
+            <button onClick={() => navigate('/')}>Home</button>
+          </li>
+        )}
+        {currentUser && (
           <>
             <li>
               <span disabled>Logged in as {role}</span>
@@ -46,7 +54,8 @@ function Navbar() {
               <button onClick={handleLogout}>Sign out</button>
             </li>
           </>
-        ) : (
+        )}
+        {!currentUser && (
           <>
             <li>
               <button onClick={() => navigate('/login')}>Login</button>
