@@ -51,7 +51,7 @@ function AdminDocuments() {
             </label>
           </div>
         ))}
-        <button type="submit">Signera</button>
+        <button type="submit">Download</button>
       </form>
     </div>
   );
