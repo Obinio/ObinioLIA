@@ -41,7 +41,7 @@ function AdminUsers() {
       <div className="users-list">
         {users.map(user => (
           <div key={user.id} className="user-item">
-            <p>{user.username} - {user.email}</p>
+            <div>{user.username} - {user.email}</div>
             <button onClick={() => deleteUser(user.id)}>Delete</button>
             <button onClick={() => handleEditUser(user.id)}>Edit</button>
           </div>

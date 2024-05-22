@@ -16,14 +16,16 @@ h1 {
 .users-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  grid-gap: 20px;
+  grid-gap: 30px;
 }
 
 .user-item {
   background-color: #333;
-  padding: 15px;
-  border-radius: 5px;
+  padding: 20px;
+  border-radius: 20px;
   color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 .user-item p {
@@ -37,7 +39,7 @@ h1 {
   background-color: #000;
   color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 20px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   font-weight: bold;
