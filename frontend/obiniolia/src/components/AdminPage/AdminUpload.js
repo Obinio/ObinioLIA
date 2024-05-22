@@ -42,6 +42,7 @@ function AdminUpload() {
 
   return (
     <div className="upload-container"> {/* Uppdatera klassen här */}
+    <div className="upload-box">
       <h1>Upload Documents</h1>
       <input type="file" accept=".jpg,.png,.pdf,.doc,.docx" onChange={handleFileChange} />
       {confirmReplace ? (
@@ -53,6 +54,7 @@ function AdminUpload() {
       ) : (
         <button onClick={handleUpload}>Upload</button>
       )}
+    </div>
     </div>
   );
 }

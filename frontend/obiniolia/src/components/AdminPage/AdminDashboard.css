@@ -6,7 +6,7 @@
 
 .sidebar {
   width: 200px;
-  background: #f4f4f4;
+  background: #333;
   padding: 20px;
 }
 
@@ -17,32 +17,35 @@
 
 .sidebar ul li a {
   text-decoration: none;
-  color: #333;
+  color: #fff;
   display: block;
   padding: 10px;
-  border-bottom: 1px solid #ccc;
-  text-align: left; /* Justera texten till vänster */
+  border-bottom: 1px solid #555;
+  text-align: left;
+  font-weight: bold;
 }
 
 .sidebar ul li a:hover {
-  background-color: #ddd;
+  background-color: #444;
 }
 
 .admin-content {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centrerar horisontellt */
-  justify-content: top; /* Centrerar vertikalt */
+  align-items: center;
+  justify-content: flex-start;
   padding: 20px;
   background: #fff;
-  text-align: center; /* Centrerar texten */
+  text-align: center;
 }
 
 .admin-content h1 {
   margin-bottom: 20px;
+  font-weight: bold;
 }
 
 .admin-content p {
   max-width: 600px;
+  font-weight: bold;
 }
